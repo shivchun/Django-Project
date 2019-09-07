@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "homeApp/home.html" %}
+
+{% block body_block %}
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Your Analyzed Text:</strong>{{purpose}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<pre><textarea name="name" rows="8" cols="80" id="myInput">{{analyzed_text}}</textarea></pre>
+<h4>No of Word:{{count}}</h4>
+<button onclick="myFunction()" class="btn btn-success">Copy text</button><br><br>
+<button type="button" class="btn btn-light"><a href="/">click here to analyze another text.</a></button>
+
+<script type="text/javascript">
+function myFunction() {
+/* Get the text field */
+var copyText = document.getElementById("myInput");
+/* Select the text field */
+copyText.select();
+copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+/* Copy the text inside the text field */
+document.execCommand("copy");
+/* Alert the copied text */
+alert("Copied the text: " + copyText.value);
+}
+</script>
+{% endblock %}

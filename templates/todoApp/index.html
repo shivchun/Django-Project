@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "homeApp/home.html" %}
+
+{% block body_block %}
+
+<div class="jumbotron jumbotron-fluid"><br><br>
+  <div style="margin-left:100px;">
+    <h4>Enter Your Todo Here:</h4>
+    <form class="" action="/todoApp/add/" method="post">
+      {% csrf_token %}
+      {{form.text}}
+      <input type="submit" name="" class="btn btn-primary" value="Add Todo">
+    </form><br>
+    <div style="width: 18rem;">
+      <a class="btn btn-primary" href="/todoApp/deleteCompleted" role="button">Delete Completed</a>
+      <a class="btn btn-primary" href="/todoApp/deleteAll" role="button">Delete All</a>
+    </div><br>
+    <div class="card" style="width: 18rem;">
+      {% if todo_list %}
+      <ul class="list-group list-group-flush">
+        {% for todo in todo_list %}
+        {% if todo.complete %}
+        <a href="" style="text-decoration: line-through;">
+          <li class="list-group-item">{{todo.text}}</li>
+        </a>
+        {% else %}
+        <a href="/todoApp/complete/{{todo.id}}">
+          <li class="list-group-item">{{todo.text}}</li>
+        </a>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      {% else %}
+      <h4>No element in todo</h4>
+      {% endif %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

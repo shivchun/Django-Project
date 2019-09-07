@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "homeApp/home.html" %}
+
+{% block body_block %}
+<form action="/textProcess/analyze">
+    <label for="">Enter Your Text Here:</label><br>
+     <textarea name="text" rows="8" cols="80"></textarea><br>
+     <h2>select operations :</h2>
+     <input type="checkbox" name="Punctuations" value="on">Remove Punctuations<br>
+     <input type="checkbox" name="upper_case" value="on">UPPERCASE<br>
+     <input type="checkbox" name="new_line" value="on">New Line Remover<br>
+     <input type="checkbox" name="extra_space" value="on">Extra Space Remover<br>
+     <input type="checkbox" name="remove_number" value="on">Remove Number<br>
+     <input type="submit" name="" value="Process" class="btn btn-primary btn-lg">
+
+</form>
+
+{% endblock %}
